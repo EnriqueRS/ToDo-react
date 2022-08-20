@@ -2,7 +2,13 @@
 import './form.css';
 
 function Form(props) {
-    const { buttonName, icon, placeholder } = setAttributesType(props.type);
+    const { 
+        buttonName, 
+        icon, 
+        placeholder,
+        messageAccount 
+    } = setAttributesType(props.type);
+
     return (
         <div className="form_div">
         <form method="post" action="">
@@ -10,6 +16,7 @@ function Form(props) {
           <p><input type="text" placeholder={placeholder} /></p>
           <p><input type="password" placeholder="Password" /></p>
           <p><input type="submit" value={buttonName} /></p>
+          <a onClick={props.onTypeChange}>{messageAccount}</a>
         </form>
       </div>
     );
@@ -26,19 +33,22 @@ function setAttributesType(type) {
             return {
                 buttonName: 'SIGN IN',
                 icon: 'login_icon',
-                placeholder: 'User'
+                placeholder: 'User',
+                messageAccount: 'Don\'t have an account yet?'
             }
         case FormType.SIGNUP:
             return {
                 buttonName: 'SIGN UP',
                 icon: 'signup_icon',
-                placeholder: 'Name'
+                placeholder: 'Name',
+                messageAccount: 'Already have an account?'
             }
         default:
             return {
                 buttonName: 'Button',
                 icon: 'icon',
-                placeholder: 'Placeholder'
+                placeholder: 'Placeholder',
+                messageAccount: 'Message account'
             }
     }
 }
