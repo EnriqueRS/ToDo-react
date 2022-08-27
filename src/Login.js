@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./components/form";
 import { useState } from "react";
+import { FaTasks } from 'react-icons/fa'
 
 function Login() {
   const [formType, setFormType] = useState('SIGNUP');
@@ -17,9 +18,14 @@ function Login() {
   }
 
   return (
-    <div id="wrapper">
-      <h1>ToDo Application</h1>
-      <Form type={ formType } onTypeChange={toggleMessageAccount}/>
+    <div>
+      <div id="wrapper">
+        <div className='panel_login'>
+          <h3>ToDo App</h3>
+          <FaTasks className='icon icon_white' />
+        </div>
+        <Form type={ formType } onTypeChange={toggleMessageAccount}/>
+      </div>
     </div>
   );
 }

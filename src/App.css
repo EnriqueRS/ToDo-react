@@ -31,33 +31,52 @@ body {
   text-align: center;
   width: 100%;
   font-family: "Myriad Pro", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
-  background-color: #8cdcf0;
-  /* background-color: #ffffff; */
+  background-color: #ffffff;
 }
 
 #wrapper {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   padding: 0px;
   text-align: center;
   width: 995px;
 }
 
-#wrapper h1 {
+@font-face {
+  font-family: "Rukinax";
+  src: url('./fonts/Rukinax.otf');
+}
+
+h3 {
   margin-top: 50px;
   font-size: 45px;
   color: #ffffff;
+  font-family: Rukinax;
 }
 
 #wrapper h1 p {
   font-size: 18px;
 }
 
+.panel_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  padding: 10px;
+  background-color: #20b6db;
+  box-shadow: 5px 5px 5px #505252;
+  border-radius: 20px 0 0 20px;
+}
+
 .form_div {
   width: 330px;
-  margin-left: 320px;
+  border-color: #20b6db;
+  border-width: 20px;
   padding: 10px;
-  border-radius: 20px;
-  background-color: #ffffff;
+  border-radius: 0 20px 20px 0;
+  background-color: #8cdcf0;
   padding: 10px;
   box-shadow: 5px 5px 5px #505252;
 }
@@ -104,6 +123,10 @@ input[type="password"] {
   margin-top: 4px;
 }
 
+.icon_white {
+  color: white;
+}
+
 .login_icon {
   background-color: #20b6db; /* defines the background color of the image */
   mask: url(/public/login_icon.svg) no-repeat center / contain;
@@ -132,7 +155,7 @@ input[type="password"] {
 
   .form_div {
     width: 50%;
-    margin-left: 25%;
+    /* margin-left: 25%; */
     padding-left: 0px;
     padding-right: 0px;
   }
