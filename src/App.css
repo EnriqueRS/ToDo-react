@@ -31,16 +31,17 @@ body {
   text-align: center;
   width: 100%;
   font-family: "Myriad Pro", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
-  background-color: #ffffff;
+  background-color: #e3f3f8;
 }
 
 #wrapper {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  padding: 0px;
-  text-align: center;
-  width: 995px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 @font-face {

@@ -13,8 +13,8 @@ function Form(props) {
         <div className="form_div">
         <form method="post" action="">
           <div className={`center icon ${icon}`}/>
-          <p><input type="text" placeholder={placeholder} /></p>
-          <p><input type="password" placeholder="Password" /></p>
+          <p><input type="text" placeholder='User' /></p>
+          <p><input type="password" placeholder={placeholder} /></p>
           <p><input type="submit" value={buttonName} /></p>
           <a onClick={props.onTypeChange}>{messageAccount}</a>
         </form>
@@ -33,14 +33,14 @@ function setAttributesType(type) {
             return {
                 buttonName: 'SIGN IN',
                 icon: 'login_icon',
-                placeholder: 'User',
+                placeholder: 'Password',
                 messageAccount: 'Don\'t have an account yet?'
             }
         case FormType.SIGNUP:
             return {
                 buttonName: 'SIGN UP',
                 icon: 'signup_icon',
-                placeholder: 'Name',
+                placeholder: 'New password',
                 messageAccount: 'Already have an account?'
             }
         default:
