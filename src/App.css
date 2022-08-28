@@ -8,6 +8,14 @@
   padding: 0.5rem 1rem;
 }
 
+#container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+}
+
 ul.menu {
   list-style: none;
 }
@@ -37,11 +45,6 @@ body {
 #wrapper {
   display: flex;
   justify-content: center;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 @font-face {
@@ -49,7 +52,7 @@ body {
   src: url('./fonts/Rukinax.otf');
 }
 
-h3 {
+.panel_login h3 {
   margin-top: 50px;
   font-size: 45px;
   color: #ffffff;
@@ -64,7 +67,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
+  width: 200px;
   padding: 10px;
   background-color: #20b6db;
   box-shadow: 5px 5px 5px #505252;
@@ -78,7 +81,6 @@ h3 {
   padding: 10px;
   border-radius: 0 20px 20px 0;
   background-color: #8cdcf0;
-  padding: 10px;
   box-shadow: 5px 5px 5px #505252;
 }
 
@@ -97,7 +99,7 @@ input[type="password"] {
   border-radius: 10px;
   font-size: 17px;
   padding-left: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #38dff1;
 }
 
 .form_div input[type="submit"] {
@@ -124,6 +126,12 @@ input[type="password"] {
   margin-top: 4px;
 }
 
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-top: 4px;
+}
+
 .icon_white {
   color: white;
 }
@@ -145,20 +153,23 @@ input[type="password"] {
 }
 
 
-@media only screen and (min-width:700px) and (max-width:995px) {
-  #wrapper {
-    width: 100%;
-  }
+@media only screen and (min-width:700px) and (max-width:900px) {
 
-  #wrapper h1 {
-    font-size: 30px;
+  .panel_login {
+    width: 100px;
   }
 
   .form_div {
-    width: 50%;
-    /* margin-left: 25%; */
-    padding-left: 0px;
-    padding-right: 0px;
+    width: 330px;
+  }
+
+  .panel_login h3 {
+    font-size: 35px;
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
   }
 
   .form_div input[type="text"],
@@ -180,17 +191,23 @@ input[type="password"] {
 }
 
 @media only screen and (min-width:400px) and (max-width:699px) {
-  #wrapper {
-    width: 100%;
-  }
 
-  #wrapper h1 {
+  .panel_login h3 {
     font-size: 30px;
   }
 
+  .logo {
+    width: 50px;
+    height: 50px;
+
+  }
+
+  .panel_login {
+    max-width: 100px;
+  }
+  
   .form_div {
-    width: 60%;
-    margin-left: 20%;
+    max-width: 250px;
   }
 
   .form_div input[type="text"],
@@ -205,22 +222,46 @@ input[type="password"] {
   .form_div .icon {
     width: 75px;
   }
+
+  .logo {
+    width: 75px;
+  }
 }
 
 @media only screen and (min-width:100px) and (max-width:399px) {
   #wrapper {
-    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  #wrapper h1 {
-    font-size: 25px;
+  .panel_login h3 {
+    order: 2;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: fit-content;
+  }
+
+  .panel_login {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 90%;
+    max-height: 100px;
+    border-radius: 20px 20px 0 0;
   }
 
   .form_div {
     width: 90%;
-    margin-left: 5%;
-    padding-left: 0px;
-    padding-right: 0px;
+    border-radius: 0  0 20px 20px;
+  }
+
+  .logo {
+    order: 1;
+    width: 40px;
+    height: 40px;
+    margin-top: 0px;
   }
 
   .form_div input[type="text"],

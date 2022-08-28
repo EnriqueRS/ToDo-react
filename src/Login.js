@@ -18,11 +18,11 @@ function Login() {
   }
 
   return (
-    <div>
-      <div id="wrapper">
+    <div id='container'>
+      <div id='wrapper'>
         <div className='panel_login'>
           <h3>ToDo App</h3>
-          <FaTasks className='icon icon_white' />
+          <FaTasks className='logo icon_white' />
         </div>
         <Form type={ formType } onTypeChange={toggleMessageAccount}/>
       </div>
