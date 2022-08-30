@@ -3,8 +3,15 @@ import Header from './Header';
 import Login from './Login';
 import Private from './Private';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+  const [token, setToken] = useState();
+
+  if(!token) {
+    return <Login setToken={setToken}/>
+  }
+
   return (
     <div className='App'>
       <div className='page'>

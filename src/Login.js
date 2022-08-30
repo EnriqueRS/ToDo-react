@@ -1,10 +1,11 @@
-import React from "react";
-import Form from "./components/form";
-import { useState } from "react";
+import Form from './components/form';
+import React, { useState } from 'react';
 import { FaTasks } from 'react-icons/fa'
+
 
 function Login() {
   const [formType, setFormType] = useState('SIGNUP');
+  const [token, setToken] = useState();
 
   function toggleMessageAccount(event) {
     event.preventDefault();
@@ -24,7 +25,10 @@ function Login() {
           <h3>ToDo App</h3>
           <FaTasks className='logo icon_white' />
         </div>
-        <Form type={ formType } onTypeChange={toggleMessageAccount}/>
+        <Form 
+        setToken={ setToken }
+        type={ formType } 
+        onTypeChange={toggleMessageAccount}/>
       </div>
     </div>
   );
