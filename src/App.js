@@ -1,16 +1,12 @@
 import './App.css';
 import Header from './Header';
 import Login from './Login';
-import Private from './Private';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import useToken from './middlewares/useToken';
+
 
 function App() {
-  const [token, setToken] = useState();
-
-  if(!token) {
-    return <Login setToken={setToken}/>
-  }
+  const { token, setToken } = useToken();
 
   return (
     <div className='App'>
@@ -19,8 +15,7 @@ function App() {
           <BrowserRouter>
           <Header/>
           <Routes>
-            <Route path='/' exact={true} element={<Login/>} />
-            <Route path='/private' exact={true} element={<Private/>} />
+            <Route path='/' exact={true} element={<Login token={token} setToken={setToken}/>} />
           </Routes>
           </BrowserRouter>
         </div>

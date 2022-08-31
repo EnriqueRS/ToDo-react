@@ -4,9 +4,8 @@ import { FaTasks } from 'react-icons/fa'
 import { FormType } from './types/formTypes'
 
 
-function Login() {
-  const [formType, setFormType] = useState(FormType.SIGNUP);
-  const [token, setToken] = useState();
+function Login(props) {
+  const [formType, setFormType] = useState(FormType.SIGNIN);
 
   function toggleMessageAccount(event) {
     event.preventDefault();
@@ -27,7 +26,7 @@ function Login() {
           <FaTasks className='logo icon_white' />
         </div>
         <Form 
-        setToken={ setToken }
+        setToken={ props.setToken }
         type={ formType } 
         onTypeChange={toggleMessageAccount}/>
       </div>
