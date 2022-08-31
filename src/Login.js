@@ -1,18 +1,19 @@
 import Form from './components/form';
 import React, { useState } from 'react';
 import { FaTasks } from 'react-icons/fa'
+import { FormType } from './types/formTypes'
 
 
 function Login() {
-  const [formType, setFormType] = useState('SIGNUP');
+  const [formType, setFormType] = useState(FormType.SIGNUP);
   const [token, setToken] = useState();
 
   function toggleMessageAccount(event) {
     event.preventDefault();
-    if (formType === 'SIGNIN') {
-      setFormType('SIGNUP');
-    } else if (formType === 'SIGNUP') {
-      setFormType('SIGNIN');
+    if (formType === FormType.SIGNIN) {
+      setFormType(FormType.SIGNUP);
+    } else if (formType === FormType.SIGNUP) {
+      setFormType(FormType.SIGNIN);
     } else {
       setFormType('');
     }

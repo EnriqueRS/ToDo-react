@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './form.css';
+import { FormType } from '../types/formTypes'
 
 function Form(props) {
   const [username, setUserName] = useState();
@@ -38,11 +39,6 @@ function Form(props) {
       </form>
     </div>
   );
-}
-
-const FormType = {
-  SIGNIN: 'SIGNIN',
-  SIGNUP: 'SIGNUP'
 }
 
 async function loginPost(credentials) {
