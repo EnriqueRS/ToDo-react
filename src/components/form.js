@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './form.css';
 import { FormType } from '../types/formTypes'
+import sendPostRequest from '../utils/sendPostRequest';
 
 function Form(props) {
   const [username, setUserName] = useState();
@@ -15,10 +15,24 @@ function Form(props) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const token = await loginPost({
+    let type;
+    let payload = {
       'username': username,
       'password': password
-    });
+    }
+    switch (props.type) {
+      case FormType.SIGNIN:
+        type = 'login';
+        break;
+      case FormType.SIGNUP:
+        type = 'user';
+        payload['role'] = 'ROLE.USER';
+        break;
+      default:
+        return;
+    }
+    const token = await sendPost(type, payload);
+    console.log(`handleSubmit ${token}`);
     props.setToken(token);
   }
 
@@ -41,22 +55,8 @@ function Form(props) {
   );
 }
 
-async function loginPost(credentials) {
-  return axios.post(`${process.env.REACT_APP_URL_API}:${process.env.REACT_APP_PORT_API}/api/${process.env.REACT_APP_VERSION_API}/login/`,
-    JSON.stringify(credentials),
-    {
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-    .then((response) => {
-      if (response.data.statusCode === 200) {
-        return response.data.data;
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+async function sendPost(url, credentials) {
+  return sendPostRequest(url, credentials);
 }
 
 function setAttributesType(type) {
