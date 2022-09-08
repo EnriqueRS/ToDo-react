@@ -1,7 +1,7 @@
-import Form from './components/form';
+import Form from '../form/form';
 import React, { useState } from 'react';
 import { FaTasks } from 'react-icons/fa'
-import { FormType } from './types/formTypes'
+import { FormType } from '../../types/formTypes'
 
 
 function Login(props) {

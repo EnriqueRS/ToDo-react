@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './Header';
-import Login from './Login';
+import Header from './components/header/Header';
+import Login from './components/login/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import useToken from './middlewares/useToken';
 
