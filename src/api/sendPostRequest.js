@@ -1,12 +1,25 @@
 import axios from 'axios';
 
+const sendPostRequestAuth = (url, token, payload) => {
+  const headers = {
+    'content-type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  }
+  return sendPost(url, payload, headers)
+};
+
 const sendPostRequest = (url, payload) => {
-    return axios.post(`${process.env.REACT_APP_URL_API}:${process.env.REACT_APP_PORT_API}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
+  const headers = {
+    'content-type': 'application/json'
+  }
+  return sendPost(url, payload, headers)
+};
+
+function sendPost(url, payload, headers) {
+  return axios.post(`${process.env.REACT_APP_URL_API}:${process.env.REACT_APP_PORT_API}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
     JSON.stringify(payload),
     {
-      headers: {
-        'content-type': 'application/json'
-      }
+      headers: headers
     })
     .then((response) => {
       if (response.data.statusCode === 200) {
@@ -16,6 +29,9 @@ const sendPostRequest = (url, payload) => {
     .catch((error) => {
       console.log(error);
     })
-  };
-  
-  export default sendPostRequest;
+}
+
+export {
+  sendPostRequest,
+  sendPostRequestAuth
+}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './form.css';
 import { FormType } from '../../types/formTypes'
-import sendPostRequest from '../../api/sendPostRequest';
+import { sendPostRequest } from '../../api/sendPostRequest';
 
 function Form(props) {
   const [username, setUserName] = useState();
