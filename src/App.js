@@ -6,8 +6,7 @@ import useToken from './middlewares/useToken';
 
 
 function App() {
-  const { token, saveToken } = useToken();
-  console.log(useToken());
+  const { setToken } = useToken();
 
   return (
     <div className='App'>
@@ -16,7 +15,7 @@ function App() {
           <BrowserRouter>
           <Header/>
           <Routes>
-            <Route path='/' exact={true} element={<Login token={token} setToken={saveToken}/>} />
+            <Route path='/' exact={true} element={<Login onSaveToken={setToken}/>} />
           </Routes>
           </BrowserRouter>
         </div>

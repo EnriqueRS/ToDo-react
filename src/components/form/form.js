@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './form.css';
 import { FormType } from '../../types/formTypes'
-import sendPostRequest from '../../utils/sendPostRequest';
+import sendPostRequest from '../../api/sendPostRequest';
 
 function Form(props) {
   const [username, setUserName] = useState();
@@ -32,7 +32,7 @@ function Form(props) {
         return;
     }
     const token = await sendPost(type, payload);
-    props.setToken(token);
+    props.onSetToken(token);
   }
 
   return (

@@ -26,7 +26,7 @@ function Login(props) {
           <FaTasks className='logo icon_white' />
         </div>
         <Form 
-        setToken={ props.setToken }
+        onSetToken={ props.onSaveToken }
         type={ formType } 
         onTypeChange={toggleMessageAccount}/>
       </div>
