@@ -1,38 +1,39 @@
-import React, { useState } from 'react';
-import './form.css';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import './form.css'
 import { FormType } from '../../types/formTypes'
-import { sendPostRequest } from '../../api/sendPostRequest';
+import { sendPostRequest } from '../../api/sendPostRequest'
 
-function Form(props) {
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+function Form (props) {
+  const [username, setUserName] = useState()
+  const [password, setPassword] = useState()
   const {
     buttonName,
     icon,
     placeholder,
     messageAccount
-  } = setAttributesType(props.type);
+  } = setAttributesType(props.type)
 
   const handleSubmit = async e => {
-    e.preventDefault();
-    let type;
-    let payload = {
-      'username': username,
-      'password': password
+    e.preventDefault()
+    let type
+    const payload = {
+      username,
+      password
     }
     switch (props.type) {
       case FormType.SIGNIN:
-        type = 'login';
-        break;
+        type = 'login'
+        break
       case FormType.SIGNUP:
-        type = 'user';
-        payload['role'] = 'ROLE.USER';
-        break;
+        type = 'user'
+        payload.role = 'ROLE.USER'
+        break
       default:
-        return;
+        return
     }
-    const token = await sendPost(type, payload);
-    props.onSetToken(token);
+    const token = await sendPost(type, payload)
+    props.onSetToken(token)
   }
 
   return (
@@ -54,11 +55,11 @@ function Form(props) {
   );
 }
 
-async function sendPost(url, credentials) {
-  return sendPostRequest(url, credentials);
+async function sendPost (url, credentials) {
+  return sendPostRequest(url, credentials)
 }
 
-function setAttributesType(type) {
+function setAttributesType (type) {
   switch (type) {
     case FormType.SIGNIN:
       return {
@@ -84,4 +85,10 @@ function setAttributesType(type) {
   }
 }
 
-export default Form;
+Form.PropTypes = {
+  onTypeChange: PropTypes.func,
+  onSetToken: PropTypes.func,
+  type: PropTypes.string
+}
+
+export default Form
