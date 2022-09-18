@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import './form.css'
-import { FormType } from '../../types/formTypes'
+import { FormType } from '../../types/FormTypes'
 import { sendPostRequest } from '../../api/sendPostRequest'
 
 function Form (props) {
@@ -52,7 +52,7 @@ function Form (props) {
         </button>
       </form>
     </div>
-  );
+  )
 }
 
 async function sendPost (url, credentials) {
@@ -85,7 +85,7 @@ function setAttributesType (type) {
   }
 }
 
-Form.PropTypes = {
+Form.propTypes = {
   onTypeChange: PropTypes.func,
   onSetToken: PropTypes.func,
   type: PropTypes.string

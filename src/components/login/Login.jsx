@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { FaTasks } from 'react-icons/fa'
 import Form from '../form/Form'
-import { FormType } from '../../types/formTypes'
+import { FormType } from '../../types/FormTypes'
 
 function Login (props) {
   const [formType, setFormType] = useState(FormType.SIGNIN)
