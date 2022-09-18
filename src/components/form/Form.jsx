@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import './form.css'
+import styles from './form.module.css'
 import { FormType } from '../../types/FormTypes'
 import { sendPostRequest } from '../../api/sendPostRequest'
 
@@ -37,15 +37,15 @@ function Form (props) {
   }
 
   return (
-    <div className="form_div">
+    <div className={styles.form_div}>
       <form onSubmit={handleSubmit}>
-        <div className={`center icon ${icon}`} />
-        <p><input type="text" placeholder='User' onChange={e => setUserName(e.target.value)} /></p>
-        <p><input type="password" placeholder={placeholder} onChange={e => setPassword(e.target.value)} /></p>
-        <p><input type="submit" value={buttonName} /></p>
+        <div className={`${styles.center} ${styles.icon} ${icon}`} />
+        <p><input type='text' placeholder='User' onChange={e => setUserName(e.target.value)} /></p>
+        <p><input type='password' placeholder={placeholder} onChange={e => setPassword(e.target.value)} /></p>
+        <p><input type='submit' value={buttonName} /></p>
         <button
-          type="button"
-          className="link-button"
+          type='button'
+          className={styles.link_button}
           onClick={props.onTypeChange}
         >
           {messageAccount}
@@ -64,14 +64,14 @@ function setAttributesType (type) {
     case FormType.SIGNIN:
       return {
         buttonName: 'SIGN IN',
-        icon: 'login_icon',
+        icon: `${styles.login_icon}`,
         placeholder: 'Password',
         messageAccount: 'Don\'t have an account yet?'
       }
     case FormType.SIGNUP:
       return {
         buttonName: 'SIGN UP',
-        icon: 'signup_icon',
+        icon: `${styles.signup_icon}`,
         placeholder: 'New password',
         messageAccount: 'Already have an account?'
       }

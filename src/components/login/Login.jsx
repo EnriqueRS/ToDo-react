@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { FaTasks } from 'react-icons/fa'
 import Form from '../form/Form'
 import { FormType } from '../../types/FormTypes'
+import styles from './login.module.css'
 
 function Login (props) {
   const [formType, setFormType] = useState(FormType.SIGNIN)
@@ -19,11 +20,11 @@ function Login (props) {
   }
 
   return (
-    <div id='container'>
-      <div id='wrapper'>
-        <div className='panel_login'>
+    <div id={styles.container}>
+      <div id={styles.wrapper}>
+        <div className={styles.panel_login}>
           <h3>ToDo App</h3>
-          <FaTasks className='logo icon_white' />
+          <FaTasks className={`${styles.logo} ${styles.icon_white}`} />
         </div>
         <Form onSetToken={ props.onSaveToken }
         type={ formType } onTypeChange={toggleMessageAccount}/>

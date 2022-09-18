@@ -1,0 +1,143 @@
+.link_button {
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+  }
+
+.form_div {
+  width: 330px;
+  border-color: #20b6db;
+  border-width: 20px;
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
+  background-color: #8cdcf0;
+  box-shadow: 5px 5px 5px #505252;
+}
+
+.form_div .form_label {
+  margin: 15px;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #20b6db;
+}
+
+.form_div input[type="text"],
+input[type="password"] {
+  width: 230px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 17px;
+  padding-left: 5px;
+  border: 1px solid #38dff1;
+}
+
+.form_div input[type="submit"] {
+  width: 230px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 17px;
+  background-color: #20b6db;
+  border-bottom: 3px solid #38dff1;
+  color: white;
+  font-weight: bold;
+}
+
+.form_div img {
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.center {
+  margin: auto;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  margin-top: 4px;
+}
+
+.login_icon {
+  background-color: #20b6db; /* defines the background color of the image */
+  mask: url(/public/login_icon.svg) no-repeat center / contain;
+  -webkit-mask: url(/public/login_icon.svg) no-repeat center / contain;
+}
+
+.signup_icon {
+  background-color: #20b6db; /* defines the background color of the image */
+  mask: url(/public/signup_icon.svg) no-repeat center / contain;
+  -webkit-mask: url(/public/signup_icon.svg) no-repeat center / contain;
+}
+
+@media only screen and (min-width:700px) and (max-width:900px) {
+  .form_div {
+    width: 330px;
+  }
+
+  .form_div input[type="text"],
+  input[type="password"] {
+    width: 80%;
+  }
+
+  .form_div textarea {
+    width: 80%;
+  }
+
+  .form_div input[type="submit"] {
+    width: 80%;
+  }
+
+  .form_div .icon {
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width:400px) and (max-width:699px) {
+  
+  .form_div {
+    max-width: 250px;
+  }
+
+  .form_div input[type="text"],
+  input[type="password"] {
+    width: 80%;
+  }
+
+  .form_div input[type="submit"] {
+    width: 80%;
+  }
+
+  .form_div .icon {
+    width: 75px;
+  }
+}
+
+@media only screen and (min-width:100px) and (max-width:399px) {
+  .form_div {
+    width: 90%;
+    border-radius: 0  0 20px 20px;
+  }
+
+  .form_div input[type="text"],
+  input[type="password"] {
+    width: 80%;
+  }
+
+  .form_div input[type="submit"] {
+    width: 80%;
+  }
+
+  .form_div .icon {
+    display: none;
+  }
+}
