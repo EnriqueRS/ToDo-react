@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css'
-import Header from './components/header/Header'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -14,7 +13,6 @@ function App () {
       <div className='page'>
         <div className='content'>
           <BrowserRouter>
-            <Header />
             <Routes>
               <Route path='/' exact={true} element={<Login onSaveToken={setToken} />} />
               <Route path='/dashboard' exact={true} element={<Dashboard />} />
