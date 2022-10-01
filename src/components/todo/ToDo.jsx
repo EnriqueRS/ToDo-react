@@ -22,8 +22,8 @@ export default function ToDo (props) {
 
   return (
     <div className={`${classType()} ${styles.card}`}>
-    <h3 className={styles.todo_type}>{props.category}</h3>
-    <h4 className={styles.todo_text}>Learn ReactJs</h4>
+      <h3 className={styles.todo_type}>{props.category}</h3>
+      <h4 className={styles.todo_text}>Learn ReactJs</h4>
     </div>
   )
 }
