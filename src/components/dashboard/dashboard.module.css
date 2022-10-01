@@ -39,8 +39,14 @@
     grid-template-rows: 0.5fr 4fr;
 }
 
-h2 {
+.sidebar h2 {
     margin: 0px;
+    color: white;
+    margin-top: 1em;
+}
+
+h2 {
+    margin-top: 0px;
 }
 
 h3 {
