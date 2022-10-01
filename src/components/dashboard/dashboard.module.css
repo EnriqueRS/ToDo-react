@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Rukinax";
+    src: url('../../fonts/Rukinax.otf');
+}
+
+.container {
+    min-height: 100vh;
+    display: grid;
+	grid-template-columns: 0.5fr 4fr;
+    grid-template-areas:
+        "sidebar main main main"
+        "sidebar main main main"
+        "sidebar main main main";
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #20b6db;
+}
+
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 25px;
+    background-color: #e3f3f8;
+    margin: 40px;
+}
+
+.main .column {
+    font-family: Rukinax;
+    color: #20b6db;
+    background-color: #ffffff;
+    box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+    font-size: 1.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    display: grid;
+    grid-template-rows: 0.5fr 4fr;
+}
+
+h2 {
+    margin: 0px;
+}
+
+h3 {
+    color: #ffffff;
+}
+  
+.logo {
+  width: 5em;
+  height: 5em;
+  margin-top: 4px;
+}
+
+.icon_white {
+  color: white;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column-header {
+    background-color: #e3f3f8;
+}
+
+.main .todo {
+}
+
+.main .inprogress {
+}
+
+.main .done {
+}
