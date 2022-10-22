@@ -6,7 +6,7 @@
 .container {
     min-height: 100vh;
     display: grid;
-	grid-template-columns: 0.5fr 4fr;
+    grid-template-columns: 0.5fr 4fr;
     grid-template-areas:
         "sidebar main main main"
         "sidebar main main main"
@@ -52,15 +52,15 @@ h2 {
 h3 {
     color: #ffffff;
 }
-  
+
 .logo {
-  width: 5em;
-  height: 5em;
-  margin-top: 4px;
+    width: 5em;
+    height: 5em;
+    margin-top: 4px;
 }
 
 .icon_white {
-  color: white;
+    color: white;
 }
 
 .cards {
@@ -69,14 +69,11 @@ h3 {
     align-items: center;
 }
 
-.main .todo {
-}
+.main .todo {}
 
-.main .inprogress {
-}
+.main .inprogress {}
 
-.main .done {
-}
+.main .done {}
 
 .draggable {
     width: 100%;
@@ -92,5 +89,5 @@ h3 {
 
 .draggable:hover {
     cursor: move;
-    /* box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px 0px, rgb(0 0 0 / 8%) 0px 4px 12px 0px */
+    motion-offset: 10%;
 }

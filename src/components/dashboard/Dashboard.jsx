@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import sendGetRequest from '../../api/sendGetRequest'
 import UseToken from '../../middlewares/useToken'
 import { FaTasks } from 'react-icons/fa'
@@ -7,9 +7,20 @@ import Column from '../column/Column'
 
 function Dashboard (props) {
   const { token } = UseToken()
+  const [todos, setTodos] = useState([])
+  const [doing, setDoing] = useState([])
+  const [done, setDone] = useState([])
+
   useEffect(() => {
     sendGetRequest('todo', token)
-  })
+      .then((response) => {
+        setTodos(response.filter((item) => item.state === 'todo'))
+        setDoing(response.filter((item) => item.state === 'doing'))
+        setDone(response.filter((item) => item.state === 'done'))
+      }).catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -20,15 +31,15 @@ function Dashboard (props) {
       <div className={styles.main}>
         <div className={`${styles.todo} ${styles.column}`}>
           <Column type={'todo'}
-            todos={['sport', 'home', 'other', 'development', 'unknown', 'language']} />
+            items={todos} />
         </div>
         <div className={`${styles.inprogress} ${styles.column}`}>
           <Column type={'doing'}
-            todos={['sport', 'home', 'other', 'development']} />
+            items={doing} />
         </div>
         <div className={`${styles.done} ${styles.column}`}>
           <Column type={'done'}
-            todos={['sport', 'home', 'unknown', 'language']} />
+            items={done} />
         </div>
       </div>
     </div>

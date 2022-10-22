@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import sendGetRequest from '../../api/sendGetRequest'
-import UseToken from '../../middlewares/useToken'
 import PropTypes from 'prop-types'
 import styles from './column.module.css'
 import ToDo from '../todo/ToDo'
@@ -8,23 +6,30 @@ import ToDo from '../todo/ToDo'
 function Column (props) {
   const dragItem = useRef()
   const dragOverItem = useRef()
-  const [list, setList] = useState(props.todos)
-  const { token } = UseToken()
+  const [list, setList] = useState([])
   useEffect(() => {
-    sendGetRequest('todo', token)
-  })
+    setList(props.items)
+  }, [props.items])
 
   const dragStart = (e, position) => {
     dragItem.current = position
-    console.log(e.target.innerHTML)
+    dragItem.type = props.type
+    console.log(props.type)
+    console.log(position)
+    console.log('start\n' + e.target.innerHTML)
   }
 
   const dragEnter = (e, position) => {
     dragOverItem.current = position
-    console.log(e.target.innerHTML)
+    console.log(props.type)
+    console.log(position)
+    console.log('enter\n' + e.target.innerHTML)
   }
 
   const drop = (e) => {
+    console.log(props.type)
+    console.log('drop')
+    console.log(dragItem)
     const copyListItems = [...list]
     const dragItemContent = copyListItems[dragItem.current]
     copyListItems.splice(dragItem.current, 1)
@@ -48,7 +53,8 @@ function Column (props) {
               key={index}
               className={`${styles.draggable}`}
               draggable>
-              <ToDo category={item}
+              <ToDo category={item.type}
+                title={item.title}
                 className={`${styles.todo}`} />
             </div>
           ))}
@@ -58,7 +64,7 @@ function Column (props) {
 }
 Column.propTypes = {
   type: PropTypes.string,
-  todos: PropTypes.array
+  items: PropTypes.array
 }
 
 export default Column
