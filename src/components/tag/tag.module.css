@@ -1,7 +1,97 @@
+:root {
+    --developmentColor: #7ab8ee;
+    --sportColor: #8db304;
+    --languageColor: #c78787;
+    --homeColor: #1ec3ec;
+    --otherColor: #b36704;
+}
+
 .container {
-    background-color: rgb(122, 184, 238);
-    margin: 5px 2em;
+    background-color: white;
+    border-style: solid;
+    margin: 0.2em 2em;
     border-radius: 8px;
     max-height: 5em;
-    min-width: 7em;
+    min-width: 10em;
+    padding: 0.5em;
+}
+
+.name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-right: 0.2em;
+    float: left;
+}
+
+.number {
+    color: white;
+    width: fit-content;
+    padding: 0.2em;
+    border-radius: 0.2em;
+    float: right;
+}
+
+.nameDevelopment {
+    color: var(--developmentColor);
+}
+
+.numberDevelopment {
+    background-color: var(--developmentColor);
+}
+
+.nameSport {
+    color: var(--sportColor);
+}
+
+.numberSport {
+    background-color: var(--sportColor);
+}
+
+.nameLanguage {
+    color: var(--languageColor);
+}
+
+.numberLanguage {
+    background-color: var(--languageColor);
+}
+
+.nameHome {
+    color: var(--homeColor);
+}
+
+.numberHome {
+    background-color: var(--homeColor);
+}
+
+.nameOther {
+    color: var(--otherColor);
+}
+
+.numberOther {
+    background-color: var(--otherColor);
+}
+
+.nameDevelopment:hover {
+    background-color: var(--developmentColor);
+    color: white;
+}
+
+.nameSport:hover {
+    background-color: var(--sportColor);
+    color: white;
+}
+
+.nameLanguage:hover {
+    background-color: var(--languageColor);
+    color: white;
+}
+
+.nameHome:hover {
+    background-color: var(--homeColor);
+    color: white;
+}
+
+.nameOther:hover {
+    background-color: var(--otherColor);
+    color: white;
 }
