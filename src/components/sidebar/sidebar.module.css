@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Rukinax";
+    src: url('../../fonts/Rukinax.otf');
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0.5em;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #20b6db;
+    color: white;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    padding: 0.5em;
+}
+
+h2 {
+    font-family: Rukinax;
+    margin: 0px;
+    color: #fff;
+}
+
+h3 {
+    margin: 0px;
+    color: #20b6db;
+}
+
+.logo {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 4px;
+    color: #fff;
+}
+
+.icon_white {
+    color: white;
+}
