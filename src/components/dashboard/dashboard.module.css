@@ -1,48 +1,29 @@
-@font-face {
-    font-family: "Rukinax";
-    src: url('../../fonts/Rukinax.otf');
-}
-
 .container {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 0.5fr 4fr;
+    grid-template-columns: 0.2fr 0.8fr;
     grid-template-areas:
-        "sidebar main main main"
-        "sidebar main main main"
-        "sidebar main main main";
+        "sidebar main"
+        "sidebar main"
+        "sidebar main";
 }
 
 .sidebar {
     grid-area: sidebar;
-    background-color: #20b6db;
+    background-color: #ffffff;
+    box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+    font-size: 1.5em;
+    border-radius: 0.5em;
+    margin: 0.5em;
 }
 
 .main {
     grid-area: main;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 25px;
-    background-color: #e3f3f8;
-    margin: 40px;
-}
-
-.main .column {
-    font-family: Rukinax;
-    color: #20b6db;
-    background-color: #ffffff;
-    box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
     font-size: 1.5em;
     padding: 0.5em;
     border-radius: 0.5em;
-    display: grid;
-    grid-template-rows: 0.5fr 4fr;
-}
-
-.sidebar h2 {
-    margin: 0px;
-    color: white;
-    margin-top: 1em;
+    margin: 0.5em;
 }
 
 h2 {
@@ -50,13 +31,14 @@ h2 {
 }
 
 h3 {
-    color: #ffffff;
+    color: #20b6db;
 }
 
 .logo {
-    width: 5em;
-    height: 5em;
-    margin-top: 4px;
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 4px;
+    color: #20b6db;
 }
 
 .icon_white {
@@ -68,12 +50,6 @@ h3 {
     flex-direction: column;
     align-items: center;
 }
-
-.main .todo {}
-
-.main .inprogress {}
-
-.main .done {}
 
 .draggable {
     width: 100%;
