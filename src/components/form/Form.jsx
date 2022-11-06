@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './form.module.css'
 import { FormType } from '../../types/FormTypes'
-import { sendPostRequest } from '../../api/sendPostRequest'
+import { useDispatch } from 'react-redux'
+import { login } from '../../actions/auth'
+import { useNavigate } from 'react-router-dom'
 
 function Form (props) {
   const [username, setUserName] = useState()
@@ -13,27 +15,36 @@ function Form (props) {
     placeholder,
     messageAccount
   } = setAttributesType(props.type)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogin = async e => {
+    e.preventDefault()
+    dispatch(login(username, password))
+      .then((data) => {
+        navigate('/dashboard')
+      })
+      .catch((error) => {
+        console.log('login catch', error)
+        // dispatch(setMessage(error))
+      })
+  }
+
+  const handleRegister = async e => {
+    e.preventDefault()
+    // TODO register
+    // dispatch(login(username, password))
+  }
 
   const handleSubmit = async e => {
     e.preventDefault()
-    let type
-    const payload = {
-      username,
-      password
-    }
     switch (props.type) {
       case FormType.SIGNIN:
-        type = 'login'
-        break
+        return handleLogin(e)
       case FormType.SIGNUP:
-        type = 'user'
-        payload.role = 'ROLE.USER'
-        break
+        return handleRegister(e)
       default:
-        return
     }
-    const token = await sendPost(type, payload)
-    props.onSetToken(token)
   }
 
   return (
@@ -53,10 +64,6 @@ function Form (props) {
       </form>
     </div>
   )
-}
-
-async function sendPost (url, credentials) {
-  return sendPostRequest(url, credentials)
 }
 
 function setAttributesType (type) {
@@ -87,7 +94,6 @@ function setAttributesType (type) {
 
 Form.propTypes = {
   onTypeChange: PropTypes.func,
-  onSetToken: PropTypes.func,
   type: PropTypes.string
 }
 

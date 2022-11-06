@@ -22,8 +22,9 @@
 }
 
 h2 {
-    font-family: Rukinax;
-    margin: 0px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 30px;
+    margin: 0px 7px;
     color: #fff;
 }
 
@@ -41,4 +42,8 @@ h3 {
 
 .icon_white {
     color: white;
+}
+
+.cursor {
+    cursor: pointer;
 }

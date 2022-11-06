@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import sendGetRequest from '../../api/sendGetRequest'
-import UseToken from '../../middlewares/useToken'
 import styles from './dashboard.module.css'
 import Sidebar from '../sidebar/Sidebar'
-import Main from '../main/Main.jsx'
+import Main from '../main/Main'
+import useToken from '../../middlewares/useToken'
 
 function Dashboard (props) {
-  const { token } = UseToken()
+  const token = useToken()
   const [tags, setTags] = useState({})
 
   useEffect(() => {
