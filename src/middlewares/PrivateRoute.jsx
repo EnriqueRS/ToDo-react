@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 function PrivateRoute ({ children }) {
-  const { user: authUser } = useSelector(x => x.auth)
+  const { user: authUser } = useSelector((state) => state.auth)
 
   if (!authUser) {
     return <Navigate to="/" />

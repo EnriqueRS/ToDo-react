@@ -5,6 +5,7 @@ import styles from './sidebar.module.css'
 import Tag from '../tag/Tag.jsx'
 import { logout } from '../../actions/auth'
 import { useDispatch } from 'react-redux'
+import history from '../../middlewares/history'
 
 function Sidebar (props) {
   const [tags, setTodos] = useState([])
@@ -15,6 +16,7 @@ function Sidebar (props) {
 
   function onLogout () {
     dispatch(logout())
+    history.navigate('/')
   }
 
   return (

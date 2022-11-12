@@ -2,10 +2,13 @@ import React from 'react'
 import './App.css'
 import Login from './components/login/Login'
 import Dashboard from './components/dashboard/Dashboard'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import PrivateRoute from './middlewares/PrivateRoute'
+import history from './middlewares/history'
 
 function App () {
+  history.navigate = useNavigate()
+  history.location = useLocation()
   return (
     <div className='App'>
       <div className='page'>

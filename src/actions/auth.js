@@ -49,6 +49,8 @@ import AuthService from '../api/auth.service'
 export const login = (username, password) => (dispatch) => {
   return AuthService.login(username, password)
     .then((data) => {
+      localStorage.setItem('user', JSON.stringify(jwtDecode(data)))
+      localStorage.setItem('token', data)
       return dispatch({
         type: LOGIN_SUCCESS,
         payload: {
