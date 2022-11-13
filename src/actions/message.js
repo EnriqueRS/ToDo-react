@@ -1,8 +1,11 @@
 import { SET_MESSAGE, CLEAR_MESSAGE } from './types'
 
-export const setMessage = (message) => ({
+export const setMessage = (message, kind) => ({
   type: SET_MESSAGE,
-  payload: message
+  payload: {
+    text: message,
+    kind
+  }
 })
 
 export const clearMessage = () => ({

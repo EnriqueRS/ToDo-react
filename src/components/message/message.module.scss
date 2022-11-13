@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+h3 {
+  font-family: Quicksand;
+  color: #000;
+}
+
+.alert {
+  width: 50%;
+  margin: 20px auto;
+  padding: 30px;
+  position: absolute;
+  left: 25%;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+}
+
+.close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  right: 15px;
+  top: 25px;
+  text-align: center;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+
+.error {
+  $bgColor: #f7a7a3;
+  $accentColor: darken($bgColor, 50);
+
+  background-color: $bgColor;
+  border-left: 5px solid $accentColor;
+  color: $accentColor;
+
+  .close {
+    border-color: $accentColor;
+    color: $accentColor;
+  }
+}
+
+.simple {
+  $bgColor: #ebebeb;
+  $accentColor: darken($bgColor, 50);
+
+  background-color: $bgColor;
+  border-left: 5px solid $accentColor;
+  color: $accentColor;
+
+  .close {
+    border-color: $accentColor;
+    color: $accentColor;
+  }
+}
+
+.success {
+  $bgColor: #a8f0c6;
+  $accentColor: darken($bgColor, 50);
+
+  background-color: $bgColor;
+  border-left: 5px solid $accentColor;
+  color: $accentColor;
+
+  .close {
+    border-color: $accentColor;
+    color: $accentColor;
+  }
+}
+
+.warning {
+  $bgColor: #ffd48a;
+  $accentColor: darken($bgColor, 50);
+
+  background-color: $bgColor;
+  border-left: 5px solid $accentColor;
+  color: $accentColor;
+
+  .close {
+    border-color: $accentColor;
+    color: $accentColor;
+  }
+}
+
+.info {
+  $bgColor: #afcff8;
+  $accentColor: darken($bgColor, 30);
+
+  background-color: $bgColor;
+  border-left: 5px solid $accentColor;
+  color: $accentColor;
+
+  .close {
+    border-color: $accentColor;
+    color: $accentColor;
+  }
+}
