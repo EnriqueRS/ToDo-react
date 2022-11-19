@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode'
+import { ERROR } from '../types/MessageTypes'
 import {
   // REGISTER_SUCCESS,
   // REGISTER_FAIL,
@@ -69,7 +70,10 @@ export const login = (username, password) => (dispatch) => {
 
       dispatch({
         type: SET_MESSAGE,
-        payload: message
+        payload: {
+          text: message,
+          kind: ERROR
+        }
       })
       throw new Error('something bad happened')
 

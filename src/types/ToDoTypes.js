@@ -1,7 +1,7 @@
 export const ToDoType = {
-  SPORT: 'Sport',
-  DEVELOPMENT: 'Development',
-  LANGUAGE: 'Language',
-  HOME: 'Home',
-  OTHER: 'Other'
+  SPORT: 'sport',
+  DEVELOPMENT: 'development',
+  LANGUAGE: 'language',
+  HOME: 'home',
+  OTHER: 'other'
 }

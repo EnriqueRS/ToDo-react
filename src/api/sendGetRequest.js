@@ -14,7 +14,7 @@ const sendGetRequest = (url, token) => {
       }
     })
     .catch((error) => {
-      console.log(error)
+      throw error
     })
 }
 

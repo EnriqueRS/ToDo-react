@@ -27,7 +27,7 @@ function sendPost (url, payload, headers) {
       }
     })
     .catch((error) => {
-      console.log(error)
+      throw new Error(error.response.data.data)
     })
 }
 
