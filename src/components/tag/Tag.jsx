@@ -1,20 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './tag.module.css'
-
+import { ToDoType } from '../../types/ToDoTypes'
 function Tag (props) {
   const classType = () => {
     switch (props.name) {
-      case 'sport':
+      case ToDoType.SPORT:
         return [styles.nameSport, styles.numberSport]
-      case 'development':
+      case ToDoType.DEVELOPMENT:
         return [styles.nameDevelopment, styles.numberDevelopment]
-      case 'language':
+      case ToDoType.LANGUAGE:
         return [styles.nameLanguage, styles.numberLanguage]
-      case 'home':
+      case ToDoType.HOME:
         return [styles.nameHome, styles.numberHome]
-      case 'other':
-        return [styles.nameOther, styles.numberOther]
       default:
         return [styles.nameOther, styles.numberOther]
     }
