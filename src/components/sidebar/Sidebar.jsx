@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { FaTasks, FaPowerOff } from 'react-icons/fa'
+import { FaSignOutAlt } from 'react-icons/fa'
 import styles from './sidebar.module.css'
 import Tag from '../tag/Tag.jsx'
 import { logout } from '../../actions/auth'
@@ -22,9 +22,8 @@ function Sidebar (props) {
   return (
     <>
       <div className={styles.header}>
-        <FaTasks className={styles.logo} />
         <h2>ToDo APP</h2>
-        <FaPowerOff onClick={onLogout} className={`${styles.logo} ${styles.cursor}`} />
+        <FaSignOutAlt onClick={onLogout} className={`${styles.logo} ${styles.cursor}`} />
       </div>
       <div className={styles.tags}>
         {Object.keys(tags).map(function (keyName, keyIndex) {

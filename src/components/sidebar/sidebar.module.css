@@ -23,7 +23,7 @@
 
 h2 {
     font-family: "Lucida Console", "Courier New", monospace;
-    margin: 0px 7px;
+    margin: 0.5rem;
     color: #fff;
 }
 
@@ -33,9 +33,9 @@ h3 {
 }
 
 .logo {
-    width: 1.5em;
-    height: 1.5em;
-    margin-right: 4px;
+    width: 2em;
+    height: 2em;
+    margin: 4px;
     color: #fff;
 }
 
