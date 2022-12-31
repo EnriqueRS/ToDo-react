@@ -16,7 +16,8 @@ const sendPostRequest = (url, payload) => {
 }
 
 function sendPost (url, payload, headers) {
-  return axios.post(`${process.env.REACT_APP_URL_API}:${process.env.REACT_APP_PORT_API}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
+  const port = `${process.env.REACT_APP_PORT_API === '80' ? '' : `:${process.env.REACT_APP_PORT_API}`}`
+  return axios.post(`${process.env.REACT_APP_URL_API}${port}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
     JSON.stringify(payload),
     {
       headers

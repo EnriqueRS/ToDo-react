@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const sendGetRequest = (url, token) => {
-  return axios.get(`${process.env.REACT_APP_URL_API}:${process.env.REACT_APP_PORT_API}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
+  const port = `${process.env.REACT_APP_PORT_API === '80' ? '' : `:${process.env.REACT_APP_PORT_API}`}`
+  return axios.get(`${process.env.REACT_APP_URL_API}${port}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
     {
       headers: {
         'content-type': 'application/json',
