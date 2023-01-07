@@ -69,12 +69,6 @@ h3 {
     align-items: center;
 }
 
-.main .todo {}
-
-.main .inprogress {}
-
-.main .done {}
-
 .draggable {
     width: 100%;
     min-height: 6rem;

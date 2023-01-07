@@ -11,6 +11,14 @@
     border-style: solid;
     border-width: 1px;
     width: 50%;
-    margin: 20px auto;
+    margin: 20px 0 0 0;
     box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2em;
+    cursor: pointer;
 }
