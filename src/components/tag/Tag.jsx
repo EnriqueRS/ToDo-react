@@ -22,7 +22,7 @@ function Tag (props) {
     <>
       <div className={`${styles.container} ${classType()[0]}`}>
         <span className={`${styles.name}`}>{props.name}</span>
-        <span className={`${styles.number} ${classType()[1]}`}>{props.number}</span>
+        {props.number && <span className={`${styles.number} ${classType()[1]}`}>{props.number}</span>}
       </div>
     </>
   )
