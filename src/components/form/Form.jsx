@@ -26,14 +26,11 @@ function Form (props) {
       })
       .catch((error) => {
         console.log('login catch', error)
-        // dispatch(setMessage(error))
       })
   }
 
   const handleRegister = async e => {
     e.preventDefault()
-    // TODO register
-    // dispatch(login(username, password))
   }
 
   const handleSubmit = async e => {

@@ -8,11 +8,12 @@ import { useDispatch } from 'react-redux'
 import history from '../../middlewares/history'
 
 function Sidebar (props) {
+  const dispatch = useDispatch()
+
   const [tags, setTodos] = useState([])
   useEffect(() => {
     setTodos(props.tags)
   }, [props.tags])
-  const dispatch = useDispatch()
 
   function onLogout () {
     dispatch(logout())

@@ -22,3 +22,11 @@
     margin-bottom: 2em;
     cursor: pointer;
 }
+
+.todos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 0;
+}

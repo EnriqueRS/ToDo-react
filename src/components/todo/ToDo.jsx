@@ -63,17 +63,17 @@ export default function ToDo (props) {
   }
 
   return (
-    <div className={`${state === 'done' ? styles.done : null} ${styles.container} ${classType()}`}
+    <div className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container} ${classType()}`}
       onClick={handleToDoDone}>
-      <div>
+      {/* <div> */}
         {iconType()}
-      </div>
-      <div>
+      {/* </div> */}
+      {/* <div> */}
         <h3 className={styles.todo_type}>{props.category}</h3>
-      </div>
-      <div className={`${styles.card}`}>
+      {/* </div> */}
+      {/* <div className={`${styles.card}`}> */}
         <h4 className={styles.todo_text}>{props.title}</h4>
-      </div>
+      {/* </div> */}
     </div>
   )
 }
