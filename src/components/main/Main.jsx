@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './main.module.css'
 import ToDo from '../todo/ToDo'
 import PropTypes from 'prop-types'
 import Tag from '../tag/Tag'
+import { postToDo } from '../../api/todo.service'
+import useToken from '../../middlewares/useToken'
+import { useDispatch } from 'react-redux'
+import { setMessage } from '../../actions/message'
 
 function Main (props) {
-  const todoArray = props.todos
-  const types = [...new Set(todoArray.map((item) => item.type))]
+  const dispatch = useDispatch()
+  const token = useToken()
+
+  const [todos, setTodos] = useState([])
+  useEffect(() => {
+    setTodos(props.todos)
+  }, [props.todos])
+
+  const [types, setTypes] = useState([])
+  useEffect(() => {
+    console.log(props.todos)
+    console.log(todos)
+    setTypes([...new Set(todos.map((item) => item.type))])
+  }, [...new Set(todos.map((item) => item.type))])
+
   const [newTodo, setNewTodo] = useState('')
   const [showCategories, setShowCAtegories] = useState(false)
 
@@ -18,6 +35,21 @@ function Main (props) {
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       setNewTodo(newTodo)
+      const toDoDto = {
+        title: newTodo,
+        type: 'other',
+        date: new Date(),
+        state: 'Pending'
+      }
+      postToDo(token, toDoDto)
+        .then((response) => {
+          setTodos([...todos, toDoDto])
+          setTypes([...new Set(todos.map((item) => item.type))])
+          props.onTagsChange(todos)
+        }).catch((error) => {
+          console.log(error)
+          dispatch(setMessage(error.response.data.data, error.response.data.status))
+        })
     }
   }
 
@@ -44,7 +76,7 @@ function Main (props) {
 
       <div className={styles.todos}>
         {
-          Array.from(todoArray).map((item) => (
+          Array.from(todos).map((item) => (
             <ToDo key={item.id}
               id={item.id}
               category={item.type}
@@ -58,6 +90,7 @@ function Main (props) {
 }
 
 Main.propTypes = {
+  onTagsChange: PropTypes.func,
   todos: PropTypes.array
 }
 
