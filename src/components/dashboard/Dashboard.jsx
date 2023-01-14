@@ -31,17 +31,17 @@ function Dashboard (props) {
   }
 
   useEffect(() => {
-    getAll(token)
-      .then((response) => {
-        setTodos(response)
-        setTags(calculateTags(todos))
-      }).catch((error) => {
-        console.log(error)
-        if (error.response.status === 401) {
-          navigate('/login')
-        }
-        dispatch(setMessage(error.response.data.data, error.response.data.status))
-      })
+  getAll(token)
+    .then((response) => {
+      setTodos(response)
+      setTags(calculateTags(todos))
+    }).catch((error) => {
+      console.log(error)
+      if (error.response.status === 401) {
+        navigate('/login')
+      }
+      dispatch(setMessage(error.response.data.data, error.response.data.status))
+    })
   }, [])
 
   return (
