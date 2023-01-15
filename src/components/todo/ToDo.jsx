@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './todo.module.css'
-import useToken from '../../middlewares/useToken'
+import useToken from '../../middleware/useToken'
 import { sendPostRequestAuth } from '../../api/sendPostRequest'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../actions/message'

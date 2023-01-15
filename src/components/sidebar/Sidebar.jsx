@@ -5,7 +5,7 @@ import styles from './sidebar.module.css'
 import Tag from '../tag/Tag.jsx'
 import { logout } from '../../actions/auth'
 import { useDispatch } from 'react-redux'
-import history from '../../middlewares/history'
+import history from '../../middleware/history'
 
 function Sidebar (props) {
   const dispatch = useDispatch()

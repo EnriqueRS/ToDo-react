@@ -4,7 +4,7 @@ import ToDo from '../todo/ToDo'
 import PropTypes from 'prop-types'
 import Tag from '../tag/Tag'
 import { postToDo } from '../../api/todo.service'
-import useToken from '../../middlewares/useToken'
+import useToken from '../../middleware/useToken'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../actions/message'
 
