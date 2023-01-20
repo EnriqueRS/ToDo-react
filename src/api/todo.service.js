@@ -1,15 +1,12 @@
 import sendGetRequest from './sendGetRequest'
 import { sendPostRequestAuth } from './sendPostRequest'
 
-const getAll = (token) => {
-  return sendGetRequest('todo', token)
+export const getAll = async (token) => {
+  const response = await sendGetRequest('todo', token)
+  console.log('response', response)
+  return response
 }
 
-const postToDo = (token, toDo) => {
-  return sendPostRequestAuth('todo', token, toDo)
-}
-
-export {
-  getAll,
-  postToDo
+export const postToDo = async (token, toDo) => {
+  return await sendPostRequestAuth('todo', token, toDo)
 }

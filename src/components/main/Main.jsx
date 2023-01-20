@@ -13,16 +13,16 @@ function Main (props) {
   const token = useToken()
 
   const [todos, setTodos] = useState([])
-  useEffect(() => {
-    setTodos(props.todos)
-  }, [props.todos])
-
   const [types, setTypes] = useState([])
   useEffect(() => {
-    console.log(props.todos)
-    console.log(todos)
-    setTypes([...new Set(todos.map((item) => item.type))])
-  }, [...new Set(todos.map((item) => item.type))])
+    setTodos(props.todos)
+    setTypes([...new Set(props.todos.map((item) => item.type))])
+    console.log('todos', props.todos)
+  }, [props.todos])
+
+  // useEffect(() => {
+  //   console.log('types', props.todos)
+  // }, [])
 
   const [newTodo, setNewTodo] = useState('')
   const [showCategories, setShowCAtegories] = useState(false)
@@ -43,7 +43,9 @@ function Main (props) {
       }
       postToDo(token, toDoDto)
         .then((response) => {
-          setTodos([...todos, toDoDto])
+          console.log('response', response)
+          setTodos([...todos, response.data])
+          console.log(todos)
           setTypes([...new Set(todos.map((item) => item.type))])
           props.onTagsChange(todos)
         }).catch((error) => {
