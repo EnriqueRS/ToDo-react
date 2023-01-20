@@ -12,8 +12,10 @@ import {
   MdOutlineHome
 } from 'react-icons/md'
 import { TbMessageLanguage, TbQuestionMark } from 'react-icons/tb'
+import ConfettiExplosion from 'confetti-explosion-react'
 
 export default function ToDo (props) {
+  const [isExploding, setIsExploding] = useState(false)
   const [state, setState] = useState(props.state)
   const dispatch = useDispatch()
   const token = useToken()
@@ -60,9 +62,15 @@ export default function ToDo (props) {
         console.log(error)
         dispatch(setMessage(error.response.data.data, error.response.data.status))
       })
+    setIsExploding(true)
+    setTimeout(() => {
+      setIsExploding(false)
+    }, 4000)
   }
 
   return (
+  <>
+    {isExploding && <ConfettiExplosion/>}
     <div className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container} ${classType()}`}
       onClick={handleToDoDone}>
       {/* <div> */}
@@ -75,6 +83,7 @@ export default function ToDo (props) {
         <h4 className={styles.todo_text}>{props.title}</h4>
       {/* </div> */}
     </div>
+    </>
   )
 }
 
