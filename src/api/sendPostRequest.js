@@ -23,7 +23,7 @@ function sendPost (url, payload, headers) {
       headers
     })
     .then((response) => {
-      if (response.data.statusCode === 200) {
+      if (response.data.statusCode === 200 || response.data.statusCode === 201) {
         return response.data.data
       }
     })
