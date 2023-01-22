@@ -18,7 +18,7 @@ import { setMessage } from '../../actions/message'
 //   return res
 // }
 
-function Dashboard (props) {
+function Dashboard () {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const token = useToken()

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { login } from '../../actions/auth'
 import { useNavigate } from 'react-router-dom'
 
-function Form (props) {
+function Form ({ type, onTypeChange }) {
   const [username, setUserName] = useState()
   const [password, setPassword] = useState()
   const {
@@ -14,7 +14,7 @@ function Form (props) {
     icon,
     placeholder,
     messageAccount
-  } = setAttributesType(props.type)
+  } = setAttributesType(type)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -35,7 +35,7 @@ function Form (props) {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    switch (props.type) {
+    switch (type) {
       case FormType.SIGNIN:
         return handleLogin(e)
       case FormType.SIGNUP:
@@ -54,7 +54,7 @@ function Form (props) {
         <button
           type='button'
           className={styles.link_button}
-          onClick={props.onTypeChange}
+          onClick={onTypeChange}
         >
           {messageAccount}
         </button>

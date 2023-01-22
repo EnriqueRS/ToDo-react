@@ -8,20 +8,21 @@ import useToken from '../../middleware/useToken'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../actions/message'
 
-function Main (props) {
+function Main ({ todosInitial, onTagsChange }) {
   const dispatch = useDispatch()
   const token = useToken()
 
+  const [tagSelected, setTagSelected] = useState('')
   const [todos, setTodos] = useState([])
   const [types, setTypes] = useState([])
   useEffect(() => {
-    setTodos(props.todos)
-    setTypes([...new Set(props.todos.map((item) => item.type))])
-    console.log('todos', props.todos)
-  }, [props.todos])
+    setTodos(todosInitial)
+    setTypes([...new Set(todosInitial.map((item) => item.type))])
+    console.log('todos', todosInitial)
+  }, [todosInitial])
 
   // useEffect(() => {
-  //   console.log('types', props.todos)
+  //   console.log('types', todosInitial)
   // }, [])
 
   const [newTodo, setNewTodo] = useState('')
@@ -47,12 +48,18 @@ function Main (props) {
           setTodos([...todos, response.data])
           console.log(todos)
           setTypes([...new Set(todos.map((item) => item.type))])
-          props.onTagsChange(todos)
+          onTagsChange(todos)
         }).catch((error) => {
           console.log(error)
           dispatch(setMessage(error.response.data.data, error.response.data.status))
         })
     }
+  }
+
+  const onTagSelected = (name) => {
+    setTagSelected(name)
+    console.log('click', name)
+    console.log('click', tagSelected)
   }
 
   return (
@@ -71,7 +78,13 @@ function Main (props) {
       {showCategories && <div className={styles.categories}>
         {types.map(function (keyName, keyIndex) {
           return (
-            <Tag key={keyIndex} name={keyName} number={undefined} />
+            <Tag
+              onTagClicked={onTagSelected}
+              key={keyIndex}
+              name={keyName}
+              number={undefined}
+              selected={keyName === tagSelected}
+            />
           )
         })}
       </div>}
@@ -93,7 +106,7 @@ function Main (props) {
 
 Main.propTypes = {
   onTagsChange: PropTypes.func,
-  todos: PropTypes.array
+  todosInitial: PropTypes.array
 }
 
 export default Main

@@ -7,17 +7,20 @@ import { logout } from '../../actions/auth'
 import { useDispatch } from 'react-redux'
 import history from '../../middleware/history'
 
-function Sidebar (props) {
+function Sidebar ({ tagsInitial }) {
   const dispatch = useDispatch()
 
   const [tags, setTodos] = useState([])
   useEffect(() => {
-    setTodos(props.tags)
-  }, [props.tags])
+    setTodos(tagsInitial)
+  }, [tagsInitial])
 
   function onLogout () {
     dispatch(logout())
     history.navigate('/')
+  }
+
+  const onTagClicked = (name) => {
   }
 
   return (
@@ -29,7 +32,13 @@ function Sidebar (props) {
       <div className={styles.tags}>
         {Object.keys(tags).map(function (keyName, keyIndex) {
           return (
-            <Tag key={keyIndex} name={keyName} number={tags[keyName]} />
+            <Tag
+            key={keyIndex}
+            name={keyName}
+            number={tags[keyName]}
+            selected={false}
+            onTagClicked={onTagClicked}
+            />
           )
         })}
       </div>
@@ -37,7 +46,7 @@ function Sidebar (props) {
   )
 }
 Sidebar.propTypes = {
-  tags: PropTypes.object
+  tagsInitial: PropTypes.object
 }
 
 export default Sidebar

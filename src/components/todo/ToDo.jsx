@@ -14,13 +14,13 @@ import {
 import { TbMessageLanguage, TbQuestionMark } from 'react-icons/tb'
 import ConfettiExplosion from 'confetti-explosion-react'
 
-export default function ToDo (props) {
+export default function ToDo ({ idInitial, stateInitial, category, title }) {
   const [isExploding, setIsExploding] = useState(false)
-  const [state, setState] = useState(props.state)
+  const [state, setState] = useState(stateInitial)
   const dispatch = useDispatch()
   const token = useToken()
   const classType = () => {
-    switch (props.category) {
+    switch (category) {
       case ToDoType.SPORT:
         return styles.sport
       case ToDoType.DEVELOPMENT:
@@ -35,7 +35,7 @@ export default function ToDo (props) {
   }
 
   const iconType = () => {
-    switch (props.category) {
+    switch (category) {
       case ToDoType.SPORT:
         return <MdOutlineSportsSoccer />
       case ToDoType.DEVELOPMENT:
@@ -52,10 +52,10 @@ export default function ToDo (props) {
   function handleToDoDone () {
     const newState = state === 'done' ? 'todo' : 'done'
     const data = {
-      id: props.id,
+      id,
       state: newState
     }
-    sendPostRequestAuth(`todo/${props.id}`, token, data)
+    sendPostRequestAuth(`todo/${idInitial}`, token, data)
       .then((response) => {
         setState(newState)
       }).catch((error) => {
@@ -77,10 +77,10 @@ export default function ToDo (props) {
         {iconType()}
       {/* </div> */}
       {/* <div> */}
-        <h3 className={styles.todo_type}>{props.category}</h3>
+        <h3 className={styles.todo_type}>{category}</h3>
       {/* </div> */}
       {/* <div className={`${styles.card}`}> */}
-        <h4 className={styles.todo_text}>{props.title}</h4>
+        <h4 className={styles.todo_text}>{title}</h4>
       {/* </div> */}
     </div>
     </>
@@ -88,8 +88,8 @@ export default function ToDo (props) {
 }
 
 ToDo.propTypes = {
-  id: PropTypes.number,
+  idInitial: PropTypes.number,
   category: PropTypes.string,
   title: PropTypes.string,
-  state: PropTypes.string
+  stateInitial: PropTypes.string
 }
