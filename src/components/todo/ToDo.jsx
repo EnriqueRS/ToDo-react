@@ -52,15 +52,18 @@ export default function ToDo ({ idInitial, stateInitial, category, title }) {
   function handleToDoDone () {
     const newState = state === 'done' ? 'todo' : 'done'
     const data = {
-      id,
+      id: idInitial,
       state: newState
     }
     sendPostRequestAuth(`todo/${idInitial}`, token, data)
       .then((response) => {
         setState(newState)
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error)
-        dispatch(setMessage(error.response.data.data, error.response.data.status))
+        dispatch(
+          setMessage(error.response.data.data, error.response.data.status)
+        )
       })
     setIsExploding(true)
     setTimeout(() => {
@@ -69,20 +72,23 @@ export default function ToDo ({ idInitial, stateInitial, category, title }) {
   }
 
   return (
-  <>
-    {isExploding && <ConfettiExplosion/>}
-    <div className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container} ${classType()}`}
-      onClick={handleToDoDone}>
-      {/* <div> */}
+    <>
+      {isExploding && <ConfettiExplosion />}
+      <div
+        className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container
+          } ${classType()}`}
+        onClick={handleToDoDone}
+      >
+        {/* <div> */}
         {iconType()}
-      {/* </div> */}
-      {/* <div> */}
+        {/* </div> */}
+        {/* <div> */}
         <h3 className={styles.todo_type}>{category}</h3>
-      {/* </div> */}
-      {/* <div className={`${styles.card}`}> */}
+        {/* </div> */}
+        {/* <div className={`${styles.card}`}> */}
         <h4 className={styles.todo_text}>{title}</h4>
-      {/* </div> */}
-    </div>
+        {/* </div> */}
+      </div>
     </>
   )
 }
