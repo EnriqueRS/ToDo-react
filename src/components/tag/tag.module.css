@@ -97,3 +97,28 @@
     background-color: var(--otherColor);
     color: white;
 }
+
+.developmentSelected {
+    background-color: var(--developmentColor);
+    color: white;
+}
+
+.sportSelected {
+    background-color: var(--sportColor);
+    color: white;
+}
+
+.languageSelected {
+    background-color: var(--languageColor);
+    color: white;
+}
+
+.homeSelected {
+    background-color: var(--homeColor);
+    color: white;
+}
+
+.otherSelected {
+    background-color: var(--otherColor);
+    color: white;
+}
