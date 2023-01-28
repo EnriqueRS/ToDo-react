@@ -1,4 +1,3 @@
-import axios from 'axios'
 
 const sendPostRequestAuth = (url, token, payload) => {
   const headers = {
@@ -17,18 +16,15 @@ const sendPostRequest = (url, payload) => {
 
 function sendPost (url, payload, headers) {
   const port = `${process.env.REACT_APP_PORT_API === '80' ? '' : `:${process.env.REACT_APP_PORT_API}`}`
-  return axios.post(`${process.env.REACT_APP_URL_API}${port}/api/${process.env.REACT_APP_VERSION_API}/${url}`,
-    JSON.stringify(payload),
-    {
-      headers
-    })
-    .then((response) => {
-      if (response.data.statusCode === 200 || response.data.statusCode === 201) {
-        return response.data.data
+  return fetch(`${process.env.REACT_APP_URL_API}${port}/api/${process.env.REACT_APP_VERSION_API}/${url}`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(payload)
+  }).then((response) => response.json())
+    .then((data) => {
+      if (data.statusCode === 200 || data.statusCode === 201) {
+        return data.data
       }
-    })
-    .catch((error) => {
-      throw new Error(error.response.data.data)
     })
 }
 
