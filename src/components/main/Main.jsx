@@ -8,6 +8,10 @@ import useToken from '../../middleware/useToken'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../actions/message'
 
+function getTags (todos) {
+  return [...new Set(todos.map((item) => item.type))]
+}
+
 function Main ({ todosInitial, onTagsChange }) {
   const dispatch = useDispatch()
   const token = useToken()
@@ -15,9 +19,10 @@ function Main ({ todosInitial, onTagsChange }) {
   const [tagSelected, setTagSelected] = useState('')
   const [todos, setTodos] = useState([])
   const [types, setTypes] = useState([])
+
   useEffect(() => {
     setTodos(todosInitial)
-    setTypes([...new Set(todosInitial.map((item) => item.type))])
+    setTypes(getTags(todosInitial))
     console.log('todos', todosInitial)
   }, [todosInitial])
 
@@ -93,10 +98,10 @@ function Main ({ todosInitial, onTagsChange }) {
         {
           Array.from(todos).map((item) => (
             <ToDo key={item.id}
-              id={item.id}
+              idInitial={item.id}
               category={item.type}
               title={item.title}
-              state={item.state} />
+              stateInitial={item.state} />
           ))
         }
       </div>
