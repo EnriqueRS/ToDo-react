@@ -74,20 +74,11 @@ export default function ToDo ({ idInitial, stateInitial, category, title }) {
   return (
     <>
       {isExploding && <ConfettiExplosion />}
-      <div
-        className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container
-          } ${classType()}`}
-        onClick={handleToDoDone}
-      >
-        {/* <div> */}
+      <div className={`${state === 'done' ? styles.done : null} ${styles.card} ${styles.container} ${classType()}`}
+        onClick={handleToDoDone}>
         {iconType()}
-        {/* </div> */}
-        {/* <div> */}
         <h3 className={styles.todo_type}>{category}</h3>
-        {/* </div> */}
-        {/* <div className={`${styles.card}`}> */}
         <h4 className={styles.todo_text}>{title}</h4>
-        {/* </div> */}
       </div>
     </>
   )

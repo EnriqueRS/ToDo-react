@@ -7,7 +7,6 @@ const preloadedState = {
     user: JSON.parse(localStorage.getItem('user'))
   }
 }
-console.log('preloadedState', preloadedState)
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware(),

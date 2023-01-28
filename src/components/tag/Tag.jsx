@@ -1,28 +1,65 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styles from './tag.module.css'
 import { ToDoType } from '../../types/ToDoTypes'
-function Tag (props) {
-  const classType = () => {
-    switch (props.name) {
+function Tag ({ onTagClicked, name, number, initialSelected }) {
+  const [className, setClassName] = useState({})
+  const [selected, setSelected] = useState(initialSelected)
+  useEffect(() => {
+    switch (name) {
       case ToDoType.SPORT:
-        return [styles.nameSport, styles.numberSport]
+        setClassName({
+          name: styles.nameSport,
+          number: styles.numberSport,
+          selected: styles.sportSelected
+        })
+        break
       case ToDoType.DEVELOPMENT:
-        return [styles.nameDevelopment, styles.numberDevelopment]
+        setClassName({
+          name: styles.nameDevelopment,
+          number: styles.numberDevelopment,
+          selected: styles.developmentSelected
+        })
+        break
       case ToDoType.LANGUAGE:
-        return [styles.nameLanguage, styles.numberLanguage]
+        setClassName({
+          name: styles.nameLanguage,
+          number: styles.numberLanguage,
+          selected: styles.languageSelected
+        })
+        break
       case ToDoType.HOME:
-        return [styles.nameHome, styles.numberHome]
+        setClassName({
+          name: styles.nameHome,
+          number: styles.numberHome,
+          selected: styles.homeSelected
+        })
+        break
       default:
-        return [styles.nameOther, styles.numberOther]
+        setClassName({
+          name: styles.nameOther,
+          number: styles.numberOther,
+          selected: styles.otherSelected
+        })
     }
+  }, [])
+
+  // useEffect(() => {
+  //   console.log('useEffect initialSelected ' + name, initialSelected)
+  //   setSelected(initialSelected)
+  // }, [initialSelected])
+
+  const tagClicked = () => {
+    setSelected(!selected)
+    onTagClicked(name)
   }
 
   return (
     <>
-      <div className={`${styles.container} ${classType()[0]}`}>
-        <span className={`${styles.name}`}>{props.name}</span>
-        {props.number && <span className={`${styles.number} ${classType()[1]}`}>{props.number}</span>}
+      <div onClick={tagClicked}
+        className={`${styles.container} ${className.name} ${selected ? className.selected : ''}`}>
+        <span className={`${styles.name}`}>{name}</span>
+        {number && <span className={`${styles.number} ${className.number}`}>{number}</span>}
       </div>
     </>
   )
@@ -30,7 +67,9 @@ function Tag (props) {
 
 Tag.propTypes = {
   name: PropTypes.string,
-  number: PropTypes.number
+  number: PropTypes.number,
+  initialSelected: PropTypes.bool,
+  onTagClicked: PropTypes.func
 }
 
 export default Tag
