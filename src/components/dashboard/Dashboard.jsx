@@ -8,15 +8,13 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setMessage } from '../../actions/message'
 
-// const calculateTags = (todosRaw) => {
-//   const arrayTags = todosRaw.map((item) => item.type)
-//   const res = arrayTags.reduce(function (types, current) {
-//     types[current] = (types[current] || 0) + 1
-//     return types
-//   }, {})
-//   console.log(res)
-//   return res
-// }
+const calculateTags = (todosRaw) => {
+  const arrayTags = todosRaw.map((item) => item.type)
+  return arrayTags.reduce(function (types, current) {
+    types[current] = (types[current] || 0) + 1
+    return types
+  }, {})
+}
 
 function Dashboard () {
   const dispatch = useDispatch()
@@ -29,12 +27,7 @@ function Dashboard () {
     getAll(token)
       .then((response) => {
         setTodos(response)
-        const arrayTags = response.map((item) => item.type)
-        const res = arrayTags.reduce(function (types, current) {
-          types[current] = (types[current] || 0) + 1
-          return types
-        }, {})
-        setTags(res)
+        setTags(calculateTags(response))
       }).catch((error) => {
         console.log(error)
         if (error.response.status === 401) {
@@ -44,11 +37,8 @@ function Dashboard () {
       })
   }, [])
 
-  // useEffect(() => {
-  //   setTags(calculateTags(todos))
-  //   // setTags({})
-  //   console.log('useEffect', tags)
-  // }, [])
+  console.log(todos)
+  console.log(tags)
 
   const onTagsChange = (newTodos) => {
     // setTags(calculateTags(newTodos))
@@ -57,10 +47,10 @@ function Dashboard () {
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>
-        <Sidebar tags={tags} />
+        <Sidebar tagsInitial={tags} />
       </div>
-      <Main todos={todos}
-      onTagsChange={onTagsChange}
+      <Main todosInitial={todos}
+        onTagsChange={onTagsChange}
       />
     </div>
   )
