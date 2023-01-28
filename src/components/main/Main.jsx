@@ -23,12 +23,11 @@ function Main ({ todosInitial, onTagsChange }) {
   useEffect(() => {
     setTodos(todosInitial)
     setTypes(getTags(todosInitial))
-    console.log('todos', todosInitial)
   }, [todosInitial])
 
-  // useEffect(() => {
-  //   console.log('types', todosInitial)
-  // }, [])
+  useEffect(() => {
+    setTypes(getTags(todosInitial))
+  }, [tagSelected])
 
   const [newTodo, setNewTodo] = useState('')
   const [showCategories, setShowCAtegories] = useState(false)
@@ -43,17 +42,15 @@ function Main ({ todosInitial, onTagsChange }) {
       setNewTodo(newTodo)
       const toDoDto = {
         title: newTodo,
-        type: 'other',
+        type: tagSelected || 'other',
         date: new Date(),
         state: 'Pending'
       }
       postToDo(token, toDoDto)
         .then((response) => {
-          console.log('response', response)
-          setTodos([...todos, response.data])
-          console.log(todos)
-          setTypes([...new Set(todos.map((item) => item.type))])
+          setTodos([...todos, response])
           onTagsChange(todos)
+          cleanNewTodo()
         }).catch((error) => {
           console.log(error)
           dispatch(setMessage(error.response.data.data, error.response.data.status))
@@ -61,10 +58,19 @@ function Main ({ todosInitial, onTagsChange }) {
     }
   }
 
+  const cleanNewTodo = () => {
+    setNewTodo(undefined)
+    setShowCAtegories(false)
+    setTagSelected(undefined)
+    document.getElementById('newTodo').value = ''
+  }
+
   const onTagSelected = (name) => {
-    setTagSelected(name)
-    console.log('click', name)
-    console.log('click', tagSelected)
+    if (name !== tagSelected) {
+      setTagSelected(name)
+    } else {
+      setTagSelected(undefined)
+    }
   }
 
   return (
@@ -88,7 +94,7 @@ function Main ({ todosInitial, onTagsChange }) {
               key={keyIndex}
               name={keyName}
               number={undefined}
-              selected={keyName === tagSelected}
+              initialSelected={keyName === tagSelected}
             />
           )
         })}
@@ -96,7 +102,7 @@ function Main ({ todosInitial, onTagsChange }) {
 
       <div className={styles.todos}>
         {
-          Array.from(todos).map((item) => (
+          Array.from(todos).reverse().map((item) => (
             <ToDo key={item.id}
               idInitial={item.id}
               category={item.type}

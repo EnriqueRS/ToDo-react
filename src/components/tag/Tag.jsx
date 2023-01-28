@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styles from './tag.module.css'
 import { ToDoType } from '../../types/ToDoTypes'
+
 function Tag ({ onTagClicked, name, number, initialSelected }) {
   const [className, setClassName] = useState({})
   const [selected, setSelected] = useState(initialSelected)
@@ -44,10 +45,9 @@ function Tag ({ onTagClicked, name, number, initialSelected }) {
     }
   }, [])
 
-  // useEffect(() => {
-  //   console.log('useEffect initialSelected ' + name, initialSelected)
-  //   setSelected(initialSelected)
-  // }, [initialSelected])
+  useEffect(() => {
+    setSelected(initialSelected)
+  }, [initialSelected])
 
   const tagClicked = () => {
     setSelected(!selected)
