@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './tag.module.css'
 import { ToDoType } from '../../types/ToDoTypes'
 
-function Tag ({ onTagClicked, name, number, initialSelected }) {
+function Tag ({ onTagClicked, name, number, initialSelected = false }) {
   const [className, setClassName] = useState({})
   const [selected, setSelected] = useState(initialSelected)
   useEffect(() => {

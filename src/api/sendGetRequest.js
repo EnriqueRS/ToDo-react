@@ -12,6 +12,7 @@ const sendGetRequest = (url, token) => {
       if (data.statusCode === 200 || data.statusCode === 201) {
         return data.data
       }
+      return data
     })
 }
 

@@ -12,7 +12,7 @@ function getTags (todos) {
   return [...new Set(todos.map((item) => item.type))]
 }
 
-function Main ({ todosInitial, onTagsChange }) {
+function Main ({ todosInitial, onTagsChange, onTodoAdd }) {
   const dispatch = useDispatch()
   const token = useToken()
 
@@ -22,18 +22,14 @@ function Main ({ todosInitial, onTagsChange }) {
 
   useEffect(() => {
     setTodos(todosInitial)
-    setTypes(getTags(todosInitial))
-  }, [todosInitial])
-
-  useEffect(() => {
-    setTypes(getTags(todosInitial))
-  }, [tagSelected])
+    setTypes(getTags(todos))
+  }, [todosInitial, tagSelected])
 
   const [newTodo, setNewTodo] = useState('')
-  const [showCategories, setShowCAtegories] = useState(false)
+  const [showCategories, setShowCategories] = useState(false)
 
   const handleChange = (event) => {
-    setShowCAtegories(event.target.value !== '')
+    setShowCategories(event.target.value !== '')
     setNewTodo(event.target.value)
   }
 
@@ -49,7 +45,7 @@ function Main ({ todosInitial, onTagsChange }) {
       postToDo(token, toDoDto)
         .then((response) => {
           setTodos([...todos, response])
-          onTagsChange(todos)
+          onTodoAdd(toDoDto)
           cleanNewTodo()
         }).catch((error) => {
           console.log(error)
@@ -60,7 +56,7 @@ function Main ({ todosInitial, onTagsChange }) {
 
   const cleanNewTodo = () => {
     setNewTodo(undefined)
-    setShowCAtegories(false)
+    setShowCategories(false)
     setTagSelected(undefined)
     document.getElementById('newTodo').value = ''
   }
@@ -116,6 +112,7 @@ function Main ({ todosInitial, onTagsChange }) {
 }
 
 Main.propTypes = {
+  onTodoAdd: PropTypes.func,
   onTagsChange: PropTypes.func,
   todosInitial: PropTypes.array
 }

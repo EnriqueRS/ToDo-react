@@ -23,25 +23,33 @@ function Dashboard () {
 
   const [tags, setTags] = useState({})
   const [todos, setTodos] = useState([])
+  const [newTodoAdded, setNewTodoAdded] = useState(false)
+
   useEffect(() => {
     getAll(token)
       .then((response) => {
-        setTodos(response)
-        setTags(calculateTags(response))
+        if (response.statusCode === 401) {
+          navigate('/login')
+        } else {
+          setTodos(response)
+          setTags(calculateTags(response))
+        }
       }).catch((error) => {
         console.log(error)
-        if (error.response.status === 401) {
+        if (error.statusCode === 401) {
           navigate('/login')
         }
         dispatch(setMessage(error.response.data.data, error.response.data.status))
       })
   }, [])
 
-  console.log(todos)
-  console.log(tags)
+  useEffect(() => {
+    setTags(calculateTags(todos))
+    setNewTodoAdded(false)
+  }, [newTodoAdded])
 
-  const onTagsChange = (newTodos) => {
-    // setTags(calculateTags(newTodos))
+  const handleTodoAdd = () => {
+    setNewTodoAdded(true)
   }
 
   return (
@@ -50,7 +58,7 @@ function Dashboard () {
         <Sidebar tagsInitial={tags} />
       </div>
       <Main todosInitial={todos}
-        onTagsChange={onTagsChange}
+        onTodoAdd={handleTodoAdd}
       />
     </div>
   )
