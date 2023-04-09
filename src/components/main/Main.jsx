@@ -22,7 +22,7 @@ function Main ({ todosInitial, onTagsChange, onTodoAdd }) {
 
   useEffect(() => {
     setTodos(todosInitial)
-    setTypes(getTags(todos))
+    setTypes(getTags(todosInitial))
   }, [todosInitial, tagSelected])
 
   const [newTodo, setNewTodo] = useState('')
@@ -44,6 +44,7 @@ function Main ({ todosInitial, onTagsChange, onTodoAdd }) {
       }
       postToDo(token, toDoDto)
         .then((response) => {
+          console.log(response)
           setTodos([...todos, response])
           onTodoAdd(toDoDto)
           cleanNewTodo()
@@ -55,9 +56,9 @@ function Main ({ todosInitial, onTagsChange, onTodoAdd }) {
   }
 
   const cleanNewTodo = () => {
-    setNewTodo(undefined)
+    setNewTodo('')
     setShowCategories(false)
-    setTagSelected(undefined)
+    setTagSelected('')
     document.getElementById('newTodo').value = ''
   }
 

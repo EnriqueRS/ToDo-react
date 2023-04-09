@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { FaSignOutAlt } from 'react-icons/fa'
 import styles from './sidebar.module.css'
@@ -9,11 +9,6 @@ import history from '../../middleware/history'
 
 function Sidebar ({ tagsInitial }) {
   const dispatch = useDispatch()
-
-  const [tags, setTodos] = useState([])
-  useEffect(() => {
-    setTodos(tagsInitial)
-  }, [tagsInitial])
 
   function onLogout () {
     dispatch(logout())
@@ -30,14 +25,14 @@ function Sidebar ({ tagsInitial }) {
         <FaSignOutAlt onClick={onLogout} className={`${styles.logo} ${styles.cursor}`} />
       </div>
       <div className={styles.tags}>
-        {Object.keys(tags).map(function (keyName, keyIndex) {
+        {Object.keys(tagsInitial).map(function (keyName, keyIndex) {
           return (
             <Tag
-            key={keyIndex}
-            name={keyName}
-            number={tags[keyName]}
-            selected={false}
-            onTagClicked={onTagClicked}
+              key={keyIndex}
+              name={keyName}
+              number={tagsInitial[keyName]}
+              selected={false}
+              onTagClicked={onTagClicked}
             />
           )
         })}

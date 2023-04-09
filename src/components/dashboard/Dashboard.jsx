@@ -23,7 +23,6 @@ function Dashboard () {
 
   const [tags, setTags] = useState({})
   const [todos, setTodos] = useState([])
-  const [newTodoAdded, setNewTodoAdded] = useState(false)
 
   useEffect(() => {
     getAll(token)
@@ -43,13 +42,10 @@ function Dashboard () {
       })
   }, [])
 
-  useEffect(() => {
-    setTags(calculateTags(todos))
-    setNewTodoAdded(false)
-  }, [newTodoAdded])
-
-  const handleTodoAdd = () => {
-    setNewTodoAdded(true)
+  const handleTodoAdd = (toDoDto) => {
+    const newTodos = [...todos, toDoDto]
+    setTodos(newTodos)
+    setTags(calculateTags(newTodos))
   }
 
   return (
